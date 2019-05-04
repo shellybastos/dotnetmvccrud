@@ -1,0 +1,46 @@
+﻿@model IEnumerable<AspNetCoreMVCCRUD.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4>Registrar Cliente</h4>
+<hr />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CPF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SiglaEstado)
+            </th>
+            <th>
+                <a asp-action="AddOrEdit" class="btn btn-outline-success"><i class="fas fa-user-plus"></i> Adicionar</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CPF)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SiglaEstado)
+                </td>
+                <td>
+                    <a asp-action="AddOrEdit" asp-route-id="@item.ClienteId"><i class="fa fa-edit"></i> Editar</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ClienteId" class="text-danger ml-1" onclick="return confirm('Are you sure to delete this record?')"><i class="fa fa-trash"></i> Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
